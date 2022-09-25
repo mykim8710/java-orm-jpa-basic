@@ -1,5 +1,7 @@
 package jpa.basic.ex1;
 
+import jpa.basic.entity.Member;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
