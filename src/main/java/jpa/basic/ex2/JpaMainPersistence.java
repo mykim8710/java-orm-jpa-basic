@@ -16,22 +16,19 @@ public class JpaMainPersistence {
         tx.begin(); // db 트랜젝션을 시작
 
         try {
-            // 비영속
+            // 비영속 : jpa와 아무 관계가 없다
             Member member = new Member();
             member.setId(100L);
-            member.setName("name100");  // Member 엔티티가 비영속상태
+            member.setUsername("name100");  // Member 엔티티가 비영속상태
 
             // 영속
             System.out.println("===== BEFORE =====");
             em.persist(member);      // Member 엔티티가 영속상태 : 엔티티 매니저 안에 영속성컨텍스트에서 엔티티를 관리
-            // em.detach(member);    // member 엔티티를 영속성 컨텍스트에서 분리 : 준영속 상태
-            // em.remove(member);    // 객체를 삭제한 상태 : 삭제
-
             System.out.println("===== AFTER =====");
             // 영속상태가 된다해서 바로 바로 db에 쿼리가 날라가지 않는다.
 
             tx.commit();    // 커밋 : 트랜잭션을 커밋하는 시점에 영속성 컨택스트에서 db에 쿼리를 날린다.
-        }catch (Exception e) {
+        } catch (Exception e) {
             tx.rollback();  // 롤백
         } finally {
             em.close();

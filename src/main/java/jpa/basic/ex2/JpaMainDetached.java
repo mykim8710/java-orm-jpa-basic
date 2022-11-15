@@ -21,14 +21,14 @@ public class JpaMainDetached {
 
         try {
             Member findMember = em.find(Member.class, 201L);    // 영속
-            findMember.setName("B_수정"); // dirty checking : flush
+            findMember.setUsername("B_수정"); // dirty checking : flush
 
             em.detach(findMember);  // 준영속 상태, jpa가 관리하지 않음
             em.clear(); // 영속성 컨택스트(1차캐시)를 통으로 초기화
             em.close(); // 영속성 컨택스트 close
 
             System.out.println("======================");
-            tx.commit();    // 커밋과 동시에 db에 sql 쿼리가 날라간다.
+            tx.commit();    // 커밋 : 준영속 상태임으로 아무일도 일어나지 않는다.
         }catch (Exception e) {
             tx.rollback();  // 롤백
         } finally {

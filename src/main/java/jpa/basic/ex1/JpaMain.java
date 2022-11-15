@@ -45,7 +45,7 @@ public class JpaMain {
                                             .getResultList();
 
             for (Member findMember : findMembers) {
-                System.out.println("findMember.getName() = " + findMember.getName());
+                System.out.println("findMember.getName() = " + findMember.getUsername());
             }
 
             tx.commit();    // 커밋
@@ -61,7 +61,7 @@ public class JpaMain {
     private static Member createMember(Long id, String name) {
         Member member = new Member();
         member.setId(id);
-        member.setName(name);
+        member.setUsername(name);
         return member;
     }
 }

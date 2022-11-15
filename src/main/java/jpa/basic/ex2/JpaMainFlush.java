@@ -20,7 +20,7 @@ public class JpaMainFlush {
         tx.begin(); // db 트랜젝션을 시작
 
         try {
-            Member member = new Member(202L, "A");
+            Member member = new Member(500L, "A");
             em.persist(member);
 
             em.flush(); // db에 쿼리가 바로 날라간다, 쓰기 지연 SQL 저장소에 있던 쿼리들이 db에 반영

@@ -21,8 +21,8 @@ public class JpaMainDirtyChecking {
         tx.begin(); // db 트랜젝션을 시작
 
         try {
-            Member findMember = em.find(Member.class, 200L);
-            findMember.setName("A_수정");
+            Member findMember = em.find(Member.class, 200L);    // select sql
+            findMember.setUsername("A_수정");
 
             //em.update(member) 이런 코드가 있어야 하지 않을까?
             // jpa는 값을 바꾸면 트랜잭션의 커밋시점에 변경을 반영

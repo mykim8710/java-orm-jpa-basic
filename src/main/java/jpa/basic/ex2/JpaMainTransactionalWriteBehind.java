@@ -25,7 +25,7 @@ public class JpaMainTransactionalWriteBehind {
             Member member2 = new Member(201L, "B");
 
             em.persist(member1);
-            em.persist(member2);    // 영속성 컨텍스트에 sql과 member 객체가 쌓인다
+            em.persist(member2);    // 영속성 컨텍스트에 sql과 member 객체가 쌓인다 : Insert SQL을 db에 보내지 않는다.
 
             System.out.println("===================");
 
