@@ -1,7 +1,13 @@
 package jpa.basic.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
+@Getter @Setter
+@NoArgsConstructor // JPA는 기본생성자를 필요로 한다.
 @Entity  // jpa가 관리할 객체
 @Table(name = "MemberForMapping") // 맵핑할 db 테이블 명
 public class MemberForMapping {
@@ -11,21 +17,5 @@ public class MemberForMapping {
 
     @Column(name = "name")
     private String username;
-
-    // JPA는 기본생성자를 필요로 한다.
-    public MemberForMapping() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
 }
