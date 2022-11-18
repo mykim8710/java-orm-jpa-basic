@@ -5,23 +5,16 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-//@ToString : X
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-public class Team { // 1
+public class Member3 { // N
     @Id
     @GeneratedValue
-    @Column(name = "TEAM_ID")
     private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "USERNAME")
     private String name;
-
-    @OneToMany(mappedBy = "team")
-    List<Member2> members = new ArrayList<>();
 }

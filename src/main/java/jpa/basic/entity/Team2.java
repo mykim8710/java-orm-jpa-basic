@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-public class Team { // 1
+public class Team2 { // 1
     @Id
     @GeneratedValue
     @Column(name = "TEAM_ID")
@@ -22,6 +22,6 @@ public class Team { // 1
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(mappedBy = "team")
-    List<Member2> members = new ArrayList<>();
+
+    List<Member3> members = new ArrayList<>();
 }
