@@ -8,20 +8,20 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
 @NoArgsConstructor
+@Getter @Setter
 @Entity
-public class Team2 { // 1
+public class Product {
     @Id
     @GeneratedValue
-    @Column(name = "TEAM_ID")
+    @Column(name = "PRODUCT_ID")
     private Long id;
 
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "TEAM_ID")
-    List<Member3> members = new ArrayList<>();
+//    @ManyToMany(mappedBy = "products")
+//    private List<Member4> members = new ArrayList<>();
+    @OneToMany(mappedBy = "product")
+    private List<Member4Product> memberProducts = new ArrayList<>();
 }
