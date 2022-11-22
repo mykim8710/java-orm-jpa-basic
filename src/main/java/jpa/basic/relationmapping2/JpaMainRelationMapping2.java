@@ -24,18 +24,18 @@ public class JpaMainRelationMapping2 {
         tx.begin(); // db 트랜젝션을 시작
 
         try {
-//            // 연관관계 매핑 : 일대다 예
-//            Member3 member = new Member3();
-//            member.setName("member1");
-//
-//            em.persist(member);
-//
-//            Team2 team = new Team2();
-//            team.setName("Team 1");
-//
-//            //
-//            team.getMembers().add(member);
-//            em.persist(team);
+            // 연관관계 매핑 : 일대다 예
+            Member3 member = new Member3();
+            member.setName("member1");
+
+            em.persist(member);
+
+            Team2 team = new Team2();
+            team.setName("Team 1");
+
+            //
+            team.getMembers().add(member);
+            em.persist(team);
 
 
             tx.commit();    // 커밋

@@ -237,8 +237,8 @@ public class JpaMain {
       - 현 객체 자기 자신을 기준으로, 앞에 나오는 것이 연관관계의 주인이다.
         - 다대일 : @ManyToOne   →  N : 1
         - 일대다 : @OneToMany   →  1 : N
-        - 일대일 : @OneToOne     →  1 : 1
-        - 다대다 : @ManyToMany →  N : M, 실무에서 쓰면 안된다!!
+        - 일대일 : @OneToOne    →  1 : 1
+        - 다대다 : @ManyToMany  →  N : M, 실무에서 쓰면 안된다!!
     - 단방향, 양방향
       - **DB 테이블**
         - 외래 키 하나로 양쪽 조인 가능
@@ -256,4 +256,22 @@ public class JpaMain {
   - 다대일 [N:1]
   - 일대다 [1:N]
   - 일대일 [1:1]
-  - 다대다 [N:M]
+  - 다대다 [N:M] : 실무에서 사용 X
+
+- [고급 매핑]
+  - 상속관계 매핑
+    - 관계형 데이터베이스는 상속 관계 X
+    - **슈퍼타입 - 서브타입 관계라는 모델링(논리 모델링) 기법**이 객체 상속과 유사
+    - 상속관계 매핑
+      - 객체의 상속과 구조와 DB의 슈퍼타입 - 서브타입 관계를 매핑
+    - 슈퍼타입 - 서브타입 논리 모델을 실제 물리 모델로 구현하는 방법
+      - 각각 테이블로 변환 → 조인전략(정석)
+      - 통합 테이블로 변환 → 단일 테이블 전략
+      - 서브타입 테이블로 변환 → 구현 클래스마다 테이블 전략 : 실무에서 사용 X
+    - **주요 어노테이션**
+      - @Inheritance(strategy=InheritanceType.XXX)
+        - **JOINED**: 조인 전략
+        - **SINGLE_TABLE**: 단일 테이블 전략
+        - **TABLE_PER_CLASS**: 구현 클래스마다 테이블 전략
+      - @DiscriminatorColumn(name=“DTYPE”)
+      - @DiscriminatorValue(“XXX”)
