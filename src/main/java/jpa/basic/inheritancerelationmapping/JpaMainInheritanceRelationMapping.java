@@ -68,7 +68,7 @@ public class JpaMainInheritanceRelationMapping {
             System.out.println("findItem = " + findItem);
 
             tx.commit();    // 커밋
-        }catch (Exception e) {
+        } catch (Exception e) {
             tx.rollback();  // 롤백
         } finally {
             em.close();
