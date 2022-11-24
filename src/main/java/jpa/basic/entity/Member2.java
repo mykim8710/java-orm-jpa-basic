@@ -16,11 +16,8 @@ public class Member2 { // N
     @GeneratedValue
     private Long id;
 
-//    @Column(name = "TEAM_ID")
-//    private Long teamId;
-
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID") // join할 DB table의 컬럼명(FK)
+    @ManyToOne(fetch = FetchType.LAZY)  // Team객체를 프록시 객체로 조회
+    @JoinColumn(name = "TEAM_ID")       // join할 DB table의 컬럼명(FK)
     private Team team;
 
     @Column(name = "USERNAME")
