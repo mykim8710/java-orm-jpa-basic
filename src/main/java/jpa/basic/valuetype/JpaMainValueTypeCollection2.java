@@ -1,17 +1,16 @@
-package jpa.basic.relationmapping2;
+package jpa.basic.valuetype;
 
-import jpa.basic.entity.Member2;
-import jpa.basic.entity.Member3;
-import jpa.basic.entity.Team;
-import jpa.basic.entity.Team2;
+import jpa.basic.entity.Address;
+import jpa.basic.entity.Address2;
+import jpa.basic.entity.AddressEntity;
+import jpa.basic.entity.Member7;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
-public class JpaMainRelationMapping2 {
+public class JpaMainValueTypeCollection2 {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hellojpa");
         // EntityManagerFactory app 로딩시점에 딱 하나만 만든다.
@@ -24,23 +23,24 @@ public class JpaMainRelationMapping2 {
         tx.begin(); // db 트랜젝션을 시작
 
         try {
-            // 연관관계 매핑 : 일대다 예
-            Member3 member = new Member3();
+            // 값 타입 컬렉션 저장
+            Member7 member = new Member7();
             member.setName("member1");
+            member.setHomeAddress(new Address2("homeCity", "homeStreet", "300"));
+
+            member.getFavoriteFoods().add("치킨");
+            member.getFavoriteFoods().add("피자");
+            member.getFavoriteFoods().add("족발");
+
+            member.getAddressHistory().add(new AddressEntity("oldCity1", "oldStreet1", "100"));
+            member.getAddressHistory().add(new AddressEntity("oldCity2", "oldStreet2", "200"));
 
             em.persist(member);
 
-            Team2 team = new Team2();
-            team.setName("Team 1");
-
-            //
-            team.getMembers().add(member);
-            em.persist(team);
-
-
             tx.commit();    // 커밋
-        }catch (Exception e) {
+        } catch (Exception e) {
             tx.rollback();  // 롤백
+            e.printStackTrace();
         } finally {
             em.close();
         }
@@ -48,3 +48,4 @@ public class JpaMainRelationMapping2 {
         emf.close();
     }
 }
+

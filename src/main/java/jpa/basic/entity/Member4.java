@@ -29,6 +29,6 @@ public class Member4 {
 //    @JoinTable(name = "MEMBER4_PRODUCT")
 //    private List<Product> products = new ArrayList<>();
 
-        @OneToMany(mappedBy = "member")
-        private List<Member4Product> memberProducts = new ArrayList<>();
+    @OneToMany(mappedBy = "member")
+    private List<Member4Product> memberProducts = new ArrayList<>();
 }
