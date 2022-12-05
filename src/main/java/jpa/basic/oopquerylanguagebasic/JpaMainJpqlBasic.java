@@ -1,4 +1,4 @@
-package jpa.basic.oopquerylanguage;
+package jpa.basic.oopquerylanguagebasic;
 
 import jpa.basic.entity.Member;
 
@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import java.util.List;
 
-public class JpaMainJpql {
+public class JpaMainJpqlBasic {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hellojpa");
         // EntityManagerFactory app 로딩시점에 딱 하나만 만든다.
@@ -30,8 +30,9 @@ public class JpaMainJpql {
             em.clear();
 
             List<Member> findMemberList = em.createQuery(
-                    "select m from Member m where m.username like '%he%'", // Entity 체를 대상으로 조회
+                    "select m from Member m where m.username like '%he%'", // Entity 객체를 대상으로 조회
                     Member.class).getResultList();
+
             for (Member findMember : findMemberList) {
                 System.out.println("findMember.getUsername() = " + findMember.getUsername());
             }
@@ -44,12 +45,5 @@ public class JpaMainJpql {
         }
 
         emf.close();
-    }
-
-    private static Member createMember(Long id, String name) {
-        Member member = new Member();
-        member.setId(id);
-        member.setUsername(name);
-        return member;
     }
 }

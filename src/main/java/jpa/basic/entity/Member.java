@@ -61,6 +61,10 @@ public class Member {
         return description;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
     // setter
     public void setId(Long id) {
         this.id = id;
@@ -84,5 +88,9 @@ public class Member {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
